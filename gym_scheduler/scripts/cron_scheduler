@@ -1,0 +1,1 @@
+* * * * * root /bin/bash /home/gym_scheduler/scripts/run.sh >> /home/gym_scheduler/crontab.log 2>&1

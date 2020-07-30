@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  gym_scheduler:
+     build:
+        context: ./gym_scheduler
+     image: mmg/gym_scheduler
+     environment:
+       - email_1=${email_1}
+       - password_1=${password_1}
+     volumes:
+        - ./gym_scheduler:/home/gym_scheduler
+     working_dir: /home/gym_scheduler/scripts
+     entrypoint: ./entrypoint.sh
+     command: cron -f

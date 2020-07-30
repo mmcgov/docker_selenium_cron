@@ -1,0 +1,6 @@
+requests
+openpyxl
+pandas
+numpy
+selenium
+scrapy
