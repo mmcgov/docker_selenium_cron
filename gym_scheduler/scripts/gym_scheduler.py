@@ -3,15 +3,11 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
-import numpy as np
-import pandas as pd
-import datetime
 import time
 import os
 
+
 class gym_scheduler():
-    
     def __init__(self, email, password):
         self.email = email
         self.password = password
@@ -39,15 +35,18 @@ class gym_scheduler():
                                      (KHTML, like Gecko) \
                                      Chrome/61.0.3163.100 \
                                      Safari/537.36")
-        self.driver = webdriver.Chrome('/chromedriver/chromedriver', 
+        self.driver = webdriver.Chrome('/chromedriver/chromedriver',
                                        options=chrome_options)
 
     def book_classes(self):
+        """
+        Function which books classes from the flyefit website
+        """
         # gets login page
         self.driver.get('https://myflye.flyefit.ie/login')
         # inputs email and password on page and clicks login
         email = self.driver.find_element_by_id("email_address")
-        password = self.driver.find_element_by_id("password") 
+        password = self.driver.find_element_by_id("password")
         email.clear()
         password.clear()
         email.send_keys(self.email)
