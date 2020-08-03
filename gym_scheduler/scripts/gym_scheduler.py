@@ -60,13 +60,16 @@ class gym_scheduler():
                 '/html/body/div[1]/div[1]/div/section/div[3]/div/div[3]/a/img')\
         .click()
         time.sleep(2)
+        # activates dropdown box to filter on gym classes
         self.driver.find_element_by_xpath(
                 '/html/body/div[1]/div[1]/div/section/div[2]/div'
                 '/form/div/div[1]/div/div/div[2]/b').click()
+        # chooses gym classes from dropdown
         self.driver.find_element_by_xpath(
                 '/html/body/div[1]/div[1]/div/section'
                 '/div[2]/div/form/div/div[1]/div/div'
                 '/div[3]/div/ul/li[2]').click()
+        # collects all available classes
         classlist = self.driver.find_elements_by_xpath(
                 '//*[starts-with(@id, "btn")]')
         id_values = [x.get_attribute("data-course-id") for x in classlist]
