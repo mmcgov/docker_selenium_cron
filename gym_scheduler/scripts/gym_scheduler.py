@@ -29,12 +29,12 @@ class gym_scheduler():
         chrome_options.add_argument("--ignore-certificate-errors")
         chrome_options.add_argument("--homedir=/tmp")
         chrome_options.add_argument("--disk-cache-dir=/tmp/cache-dir")
-        chrome_options.add_argument("user-agent=Mozilla/5.0 \
-                                     (X11; Linux x86_64) \
-                                     AppleWebKit/537.36 \
-                                     (KHTML, like Gecko) \
-                                     Chrome/61.0.3163.100 \
-                                     Safari/537.36")
+        chrome_options.add_argument("user-agent=Mozilla/5.0 "
+                                    "(X11; Linux x86_64) "
+                                    "AppleWebKit/537.36 "
+                                    "(KHTML, like Gecko) "
+                                    "Chrome/61.0.3163.100 "
+                                    "Safari/537.36")
         self.driver = webdriver.Chrome('/chromedriver/chromedriver',
                                        options=chrome_options)
 
@@ -53,20 +53,22 @@ class gym_scheduler():
         password.send_keys(self.password)
         self.driver.find_element_by_name("log_in").click()
         # navigates to workouts page
-        self.driver.find_element_by_xpath(".//a[contains(@href, \
-                                           '/myflye/book-workout')]").click()
+        self.driver.find_element_by_xpath(
+                './/a[contains(@href, "/myflye/book-workout")]').click()
         # navigates to tomorrows schedule as can book 24 hrs in advance
-        self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/div/section\
-                                           /div[3]/div/div[3]/a/img").click()
+        self.driver.find_element_by_xpath(
+                '/html/body/div[1]/div[1]/div/section/div[3]/div/div[3]/a/img')\
+        .click()
         time.sleep(2)
-        self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/div/section\
-                                          /div[2]/div/form/div/div[1]/div/div\
-                                          /div[2]/b").click()
-        self.driver.find_element_by_xpath("/html/body/div[1]/div[1]/div/section\
-                                           /div[2]/div/form/div/div[1]/div/div\
-                                           /div[3]/div/ul/li[2]").click()
-        classlist = self.driver.find_elements_by_xpath('//*[starts-with(@id,'
-                                                       ' "btn")]')
+        self.driver.find_element_by_xpath(
+                '/html/body/div[1]/div[1]/div/section/div[2]/div'
+                '/form/div/div[1]/div/div/div[2]/b').click()
+        self.driver.find_element_by_xpath(
+                '/html/body/div[1]/div[1]/div/section'
+                '/div[2]/div/form/div/div[1]/div/div'
+                '/div[3]/div/ul/li[2]').click()
+        classlist = self.driver.find_elements_by_xpath(
+                '//*[starts-with(@id, "btn")]')
         id_values = [x.get_attribute("data-course-id") for x in classlist]
         cls_names = [x.get_attribute("data-course-title") for x in classlist]
         cls_time = [x.get_attribute("data-course-time") for x in classlist]
