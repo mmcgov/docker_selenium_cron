@@ -1,1 +1,20 @@
 /bin/sh: 1: root: not found
+/bin/sh: 1: root: not found
+Traceback (most recent call last):
+  File "/home/gym_scheduler/scripts/gym_scheduler.py", line 91, in <module>
+    main()
+  File "/home/gym_scheduler/scripts/gym_scheduler.py", line 87, in main
+    gs_1.book_classes()
+  File "/home/gym_scheduler/scripts/gym_scheduler.py", line 54, in book_classes
+    self.driver.find_element_by_name("log_in").click()
+  File "/usr/local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 496, in find_element_by_name
+    return self.find_element(by=By.NAME, value=name)
+  File "/usr/local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "/usr/local/lib/python3.8/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/usr/local/lib/python3.8/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[name="log_in"]"}
+  (Session info: headless chrome=94.0.4606.61)
+
